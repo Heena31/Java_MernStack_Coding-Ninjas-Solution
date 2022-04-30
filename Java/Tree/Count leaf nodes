@@ -1,0 +1,36 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution {
+
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+	
+	public static int countLeafNodes(TreeNode<Integer> root){
+
+		// Write your code here
+        Queue<TreeNode> pendingNodes=new LinkedList<>();
+        pendingNodes.add(root);
+        int c=0;
+        while(!pendingNodes.isEmpty()){
+            TreeNode<Integer> FrontNode=pendingNodes.poll();
+            for(int i=0;i<FrontNode.children.size();i++){
+                if(FrontNode.children.get(i).children.size()==0){
+                    c++;
+                }
+                pendingNodes.add(FrontNode.children.get(i));
+            }
+        }
+        return c;
+	}
+	
+}
