@@ -1,0 +1,35 @@
+import java.util.LinkedList;
+import java.util.Queue;
+public class Solution {
+
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+	
+	
+	
+	public static int sumOfAllNode(TreeNode<Integer> root){
+	Queue <TreeNode> pendingNode= new LinkedList<>();
+      pendingNode.add(root);
+       int sum=0;
+        sum=sum+root.data;
+       while(!pendingNode.isEmpty()){
+          TreeNode<Integer> frontNode=pendingNode.poll();
+        for(int i=0;i<frontNode.children.size();i++){
+          sum=sum+frontNode.children.get(i).data;
+        
+           pendingNode.add(frontNode.children.get(i));
+       }
+       }
+       
+      return sum;
+	}
+}
