@@ -1,0 +1,44 @@
+import java.util.LinkedList;
+import java.util.Queue;
+public class Solution {
+
+/*	TreeNode class 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+fi
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+
+	
+	public static int numNodeGreater(TreeNode<Integer> root,int x){
+
+		// Write your code here		
+      Queue<TreeNode> pendingNodes= new LinkedList<>();
+      pendingNodes.add(root);
+        int count=0;
+        if(root.data>x){
+            count++;
+        }
+        while(!pendingNodes.isEmpty())
+        {
+             TreeNode<Integer> FrontNode=pendingNodes.poll();
+             for(int i=0;i<FrontNode.children.size();i++){
+                 if(FrontNode.children.get(i).data>x){
+                    count++; 
+                 }
+                     
+                 pendingNodes.add(FrontNode.children.get(i));
+             }
+            
+        }
+     
+        
+        return count;
+	}
+	
+}
