@@ -1,0 +1,50 @@
+import java.util.Queue;
+import java.util.LinkedList;
+public class Solution {
+
+	public static int[] stockSpan(int[] price) {
+		//Your code goes here
+        int s=0,n=0,m;
+        Queue<Integer> extra=new LinkedList<>();
+        extra.add(1);
+        for(int i=1;i<price.length;i++)
+        {
+            m=i;
+            s=0;
+            for(int j=i-1;j>=0;j--)
+            {
+              
+            if(price[i]<=price[j])
+                {
+               
+                break;
+                }
+                else
+                {
+                    n=j;
+                    s=-1;
+                }
+            }
+           
+        if(s==0)
+        {
+            extra.add(1);
+        }
+        else
+        {
+            extra.add(m-n+1);
+        }
+            
+        }
+       
+        int k=0;
+        int ans[]=new int[extra.size()];
+        while(extra.size()!=0)
+        {
+            ans[k]=extra.poll();
+            k++;
+        }
+        return ans;
+	}
+
+}
