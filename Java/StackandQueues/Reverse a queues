@@ -1,0 +1,19 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+public class Solution {
+
+	public static void reverseQueue(Queue<Integer> input) {
+		//Your code goes here
+        Stack<Integer> extra=new Stack<>();
+        while(!input.isEmpty()){
+            extra.push(input.poll());
+        }
+        
+        while(extra.size()!=0)
+        {
+            System.out.print(extra.pop()+" ");
+        }
+	}
+
+}
